@@ -40,7 +40,11 @@ docker run --name ots -p "7143:7143" dismantl/onetimesecret
 Permissions are weird, `chmod 777` and pray.
 
 ```
-docker run --rm -p 80:80 -v ./html:/usr/share/nginx/html:ro nginx
+docker run -d -p 80:80 -v ./html:/usr/share/nginx/html:ro nginx
+```
+
+```
+docker run -d -p 80:80 -v ./nginx.conf:/etc/nginx/nginx.conf -v ./html:/usr/share/nginx/html:ro nginx
 ```
 
 
