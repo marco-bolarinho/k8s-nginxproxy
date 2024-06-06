@@ -13,4 +13,16 @@ server {
 }
 ```
 
+```
+server {
+        listen      80;
+        server_name certs.st0cki.camdvr.org;
+
+
+        location / {
+                proxy_pass https://localhost:2002;
+        }
+}
+```
+
 
