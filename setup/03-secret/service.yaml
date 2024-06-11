@@ -1,0 +1,10 @@
+apiVersion: apps/v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: ots
+  ports:
+    - protocol: TCP
+      port: 7143

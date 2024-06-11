@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ots
+  labels:
+    app: ots
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ots
+  template:
+    metadata:
+      labels:
+        app: ots
+    spec:
+      containers:
+        - name: ots
+          image: dismantl/onetimesecret:latest
+          ports:
+            - containerPort: 7143
