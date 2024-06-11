@@ -1,4 +1,6 @@
 kubectl delete configmap/nginx-config
+kubectl delete deployment/nginx-proxy
+kubectl delete service/nginx-service
 
 kubectl create configmap nginx-config --from-file=nginx.conf
 kubectl apply -f deployment.yaml
