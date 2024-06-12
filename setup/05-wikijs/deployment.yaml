@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: wikijs
-          image: linuxserver/wikijs:latest
+          image: lscr.io/linuxserver/wikijs:latest
           ports:
             - containerPort: 3000
           volumeMounts:
