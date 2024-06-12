@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ots-deployment
+  labels:
+    app: ots-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ots-deployment
+  template:
+    metadata:
+      labels:
+        app: ots-deployment
+    spec:
+      containers:
+        - name: ots-deployment
+          image: siw36/onetimesecret:latest
+          ports:
+            - containerPort: 7143
+          env:
+            - name: OTS_DOMAIN
+              value: secret.marco-k8s.cloudns.be
+            - name: OTS_MASTER_KEY
+              value: super
+            - name: OTS_REDIS_PW
+              value: ''
+            - name: OTS_REDIS_HOST
+              value: redisinsight
+            - name: OTS_REDIS_PORT
+              value: '5540'
