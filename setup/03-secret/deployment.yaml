@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: ots
-          image: dismantl/onetimesecret:latest
+          image: dismantl/onetimesecret
           ports:
             - containerPort: 7143
