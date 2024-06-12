@@ -19,3 +19,4 @@ spec:
           image: dismantl/onetimesecret
           ports:
             - containerPort: 7143
+              name: http
