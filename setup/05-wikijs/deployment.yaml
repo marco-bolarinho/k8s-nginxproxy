@@ -19,3 +19,8 @@ spec:
           image: linuxserver/wikijs:latest
           ports:
             - containerPort: 3000
+          volumeMounts:
+            - mountPath: /wiki/config
+              name: /config
+            - mountPath: /wiki/data
+              name: /data
