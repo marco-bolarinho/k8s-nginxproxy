@@ -25,7 +25,7 @@ spec:
             - name: OTS_MASTER_KEY
               value: super
             - name: OTS_REDIS_PW
-              value: ''
+              value: none
             - name: OTS_REDIS_HOST
               value: redisinsight
             - name: OTS_REDIS_PORT
