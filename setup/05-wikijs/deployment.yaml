@@ -20,7 +20,7 @@ spec:
           ports:
             - containerPort: 3000
           volumeMounts:
-            - mountPath: /wiki/config
-              name: /config
-            - mountPath: /wiki/data
-              name: /data
+            - mountPath: /config
+              name: /wiki/config
+            - mountPath: /data
+              name: /wiki/data
