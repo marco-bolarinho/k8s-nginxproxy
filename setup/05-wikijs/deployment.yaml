@@ -16,25 +16,6 @@ spec:
     spec:
       containers:
         - name: wikijs
-          image: lscr.io/linuxserver/wikijs:latest
+          image: requarks/wiki:latest
           ports:
             - containerPort: 3000
-          volumeMounts:
-            - mountPath: /config
-              name: config
-            - mountPath: /data
-              name: data
-          env:
-            - name: PUID
-              value: '1000'
-            - name: PGID
-              value: '1000'
-            - name: TZ
-              value: Etc/UTC
-      volumes:
-        - name: config
-          hostPath:
-            path: /wikijs/config
-        - name: data
-          hostPath:
-            path: /wikijs/data
