@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: plik
+  labels:
+    app: plik
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: plik
+  template:
+    metadata:
+      labels:
+        app: plik
+    spec:
+      containers:
+        - name: plik
+          image: rootgg/plik:latest
+          ports:
+            - containerPort: 8080
