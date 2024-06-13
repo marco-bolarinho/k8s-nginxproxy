@@ -19,3 +19,6 @@ spec:
           image: keyfactor/ejbca-ce
           ports:
             - containerPort: 8443
+          env:
+            - name: TLS_SETUP_ENABLED
+              value: simple
