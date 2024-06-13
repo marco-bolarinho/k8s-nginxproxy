@@ -23,7 +23,12 @@ spec:
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf  # Mount the NGINX configuration file
               subPath: nginx.conf  # Subpath inside the volume
+            - name: nginx-index
+              mountPath: /usr/share/nginx/html/
       volumes:
         - name: nginx-config-volume
           configMap:
             name: nginx-config  # Name of the ConfigMap
+        - name: nginx-index
+          configMap:
+            name: index
