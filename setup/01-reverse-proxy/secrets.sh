@@ -1,3 +1,5 @@
+#!/bin/bash
+
 kubectl delete secret/cert
 kubectl delete secret/cert-key
 

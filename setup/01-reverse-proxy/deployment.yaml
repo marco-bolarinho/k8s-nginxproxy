@@ -25,6 +25,12 @@ spec:
               subPath: nginx.conf  # Subpath inside the volume
             - name: nginx-index
               mountPath: /usr/share/nginx/html/
+            - name: cert
+              mountPath: '/etc/secrets'
+              subPath: 'cert.pem'
+            - name: cert-key
+              mountPath: '/etc/secrets'
+              subPath: 'cert-key.pem'
       volumes:
         - name: nginx-config-volume
           configMap:
@@ -32,3 +38,9 @@ spec:
         - name: nginx-index
           configMap:
             name: index
+        - name: cert
+          secret:
+            secretName: cert
+        - name: cert-key
+          secret:
+            secretName: cert-key
