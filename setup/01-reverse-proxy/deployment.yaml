@@ -26,10 +26,10 @@ spec:
             - name: nginx-index
               mountPath: /usr/share/nginx/html/
             - name: cert
-              mountPath: '/etc/'
+              mountPath: '/etc/cert.pem'
               subPath: 'cert.pem'
             - name: cert-key
-              mountPath: '/etc/'
+              mountPath: '/etc/cert-key.pem'
               subPath: 'cert-key.pem'
       volumes:
         - name: nginx-config-volume
