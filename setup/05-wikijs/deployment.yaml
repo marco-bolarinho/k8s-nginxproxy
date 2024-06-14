@@ -19,15 +19,15 @@ spec:
           image: requarks/wiki:latest
           ports:
             - containerPort: 3000
-              name: http2 # <- pain
+              name: http3 # <- pain
           env:
             - name: DB_TYPE
-              value: 'postgres'
+              value: postgres
             - name: DB_PORT
               value: '5432'
             - name: DB_USER
-              value: 'wiki'
+              value: wiki
             - name: DB_PASS
-              value: 'Passw0rd'
+              value: Passw0rd
             - name: DB_NAME
-              value: 'wiki_db'
+              value: wiki_db
