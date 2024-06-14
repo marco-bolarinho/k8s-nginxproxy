@@ -1,8 +1,8 @@
 #!/bin/bash
 
 kubectl delete configmap/psql-secret
-kubectl delete deployment/postgre
-kubectl delete service/postgre-service
+kubectl delete deployment/postgres
+kubectl delete service/postgres-service
 
 kubectl apply -f configmap-secret
 kubectl apply -f psql-pv.yaml
