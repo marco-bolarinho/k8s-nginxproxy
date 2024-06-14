@@ -19,7 +19,7 @@ spec:
           image: requarks/wiki:latest
           ports:
             - containerPort: 3000
-              name: http # <- pain
+              name: http1 # <- pain
           env:
             - name: DB_TYPE
               value: 'sqlite'
