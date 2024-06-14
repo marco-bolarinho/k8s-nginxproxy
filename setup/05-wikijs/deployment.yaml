@@ -19,10 +19,12 @@ spec:
           image: requarks/wiki:latest
           ports:
             - containerPort: 3000
-              name: http3 # <- pain
+              name: http4 # <- pain
           env:
             - name: DB_TYPE
               value: postgres
+            - name: DB_HOST
+              value: postgres-service
             - name: DB_PORT
               value: '5432'
             - name: DB_USER
