@@ -19,17 +19,7 @@ spec:
           image: requarks/wiki:latest
           ports:
             - containerPort: 3000
-              name: http4 # <- pain
+              name: httpx # <- pain
           env:
             - name: DB_TYPE
-              value: postgres
-            - name: DB_HOST
-              value: 10.32.0.253
-            - name: DB_PORT
-              value: '5432'
-            - name: DB_USER
-              value: wiki
-            - name: DB_PASS
-              value: Passw0rd
-            - name: DB_NAME
-              value: wiki_db
+              value: sqlite
