@@ -5,7 +5,7 @@ kubectl exec -it service/postgres-service -- psql postgresql://admin:Passw0rd@lo
 
   CREATE USER plik;
   CREATE DATABASE plik_db;
-  GRANT ALL PRIVILEGES ON DATABASE my_project_development TO plik;
+  GRANT ALL PRIVILEGES ON DATABASE plik_db TO plik;
 
 
 EOSQL
