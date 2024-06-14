@@ -16,7 +16,7 @@ kubectl exec -it service/postgres-service -- psql postgresql://admin:Passw0rd@lo
   CREATE USER ejbca;
   ALTER USER ejbca WITH PASSWORD 'Passw0rd';
   CREATE DATABASE ejbca_db;
-  GRANT ALL PRIVILEGES ON DATABASE ejbca TO ejbca;
+  GRANT ALL PRIVILEGES ON DATABASE ejbca_db TO ejbca;
 
   CREATE USER wiki;
   ALTER USER wiki WITH PASSWORD 'Passw0rd';
