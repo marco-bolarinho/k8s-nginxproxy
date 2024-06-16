@@ -2,8 +2,6 @@
 
 This project was created with the objective of learning K8s basics and concepts.
 
-Here is an outline about the architecture of this web application.
-
 ## Components
 
 - **Load Balancer (AWS)**
