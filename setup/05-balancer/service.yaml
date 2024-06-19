@@ -4,6 +4,7 @@ metadata:
   name: balancer
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
+    service.beta.kubernetes.io/aws-load-balancer-extra-security-groups: "sg-0d8b2c1a0286da538"
 spec:
   selector:
     app: nginx
