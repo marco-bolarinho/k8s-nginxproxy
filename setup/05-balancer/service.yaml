@@ -9,7 +9,7 @@ metadata:
     service.beta.kubernetes.io/aws-load-balancer-name: global-nlb
 spec:
   selector:
-    app: nginx
+    app: nginx-proxy
   type: LoadBalancer
   ports:
     - name: http
