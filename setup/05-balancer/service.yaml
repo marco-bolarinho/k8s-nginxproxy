@@ -10,8 +10,9 @@ spec:
   type: LoadBalancer
   ports:
     - name: http
+      protocol: TCP
       port: 80
-      nodePort: 30080
+      targetPort: 30001
     - name: https
       port: 443
-      nodePort: 30443
+      targetPort: 30002
