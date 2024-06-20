@@ -1,14 +1,36 @@
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
-  name: env-single-secret
+  name: my-service
 spec:
-  containers:
-    - name: envars-test-container
-      image: nginx
-      env:
-        - name: SECRET_USERNAME
-          valueFrom:
-            secretKeyRef:
-              name: backend-user
-              key: backend-username
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-service
+  template:
+    metadata:
+      labels:
+        app: my-service
+    spec:
+      volumes:
+        - name: secrets-store-inline
+          csi:
+            driver: secrets-store.csi.k8s.io
+            readOnly: true
+            volumeAttributes:
+              secretProviderClass: "aws-secrets"
+      containers:
+        - name: my-service
+          image: myprivate/dockerimage
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secret
+                  key: test
+          volumeMounts:
+            - name: secrets-store-inline
+              mountPath: "/mnt/secrets-store"
+              readOnly: true
+      imagePullSecrets:
+        - name: "docker-hub"
