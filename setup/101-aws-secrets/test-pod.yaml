@@ -1,19 +1,14 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: test-pod
+  name: env-single-secret
 spec:
   containers:
-    - name: test-pod
+    - name: envars-test-container
       image: nginx
-      volumeMounts:
-        - name: secrets-store-inline
-          mountPath: "/mnt/secrets-store"
-          readOnly: true
-  volumes:
-    - name: secrets-store-inline
-      csi:
-        driver: secrets-store.csi.k8s.io
-        readOnly: true
-        volumeAttributes:
-          secretProviderClass: "aws-secrets"
+      env:
+        - name: SECRET_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: backend-user
+              key: backend-username
