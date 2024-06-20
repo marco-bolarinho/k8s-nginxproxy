@@ -1,36 +1,20 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: my-service
+  name: secret-test-pod
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: my-service
-  template:
-    metadata:
-      labels:
-        app: my-service
-    spec:
-      volumes:
+  containers:
+    - name: my-app
+      image: alpine
+      command: [ "sh", "-c", "cat /mnt/secrets-store/my-secret && sleep 3600" ]
+      volumeMounts:
         - name: secrets-store-inline
-          csi:
-            driver: secrets-store.csi.k8s.io
-            readOnly: true
-            volumeAttributes:
-              secretProviderClass: "aws-secrets"
-      containers:
-        - name: my-service
-          image: myprivate/dockerimage
-          env:
-            - name: JWT_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws-secret
-                  key: test
-          volumeMounts:
-            - name: secrets-store-inline
-              mountPath: "/mnt/secrets-store"
-              readOnly: true
-      imagePullSecrets:
-        - name: "docker-hub"
+          mountPath: "/mnt/secrets-store"
+          readOnly: true
+  volumes:
+    - name: secrets-store-inline
+      csi:
+        driver: secrets-store.csi.k8s.io
+        readOnly: true
+        volumeAttributes:
+          secretProviderClass: "aws-secrets"
