@@ -1,3 +1,16 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: secret-pvc
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: efs-sc
+  resources:
+    requests:
+      storage: 5Gi
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -19,3 +32,12 @@ spec:
           image: dismantl/onetimesecret
           ports:
             - containerPort: 7143
+          volumeMounts:
+            - name: data
+              mountPath: "/data"
+              
+      volumes:
+        - name: data
+          persistentVolumeClaim:
+            claimName: secret-pvc
+
