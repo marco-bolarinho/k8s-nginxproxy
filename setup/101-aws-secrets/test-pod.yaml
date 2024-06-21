@@ -3,6 +3,7 @@ kind: Pod
 metadata:
   name: secret-test-pod
 spec:
+  serviceAccountName: secrets-store-sa
   containers:
     - name: my-app
       image: alpine
@@ -17,4 +18,4 @@ spec:
         driver: secrets-store.csi.k8s.io
         readOnly: true
         volumeAttributes:
-          secretProviderClass: "aws-secrets"
+          secretProviderClass: "aws-secrets-test"
