@@ -1,3 +1,27 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-initdb
+data:
+  01-init.sql: |
+    CREATE DATABASE plik_db;
+    CREATE USER plik_usr WITH ENCRYPTED PASSWORD 'Passw0rd';
+    GRANT ALL PRIVILEGES ON DATABASE plik_db TO plik_usr;
+    \c plik_db postgres
+    GRANT ALL ON SCHEMA public TO plik_usr;
+
+    CREATE DATABASE wiki_db;
+    CREATE USER wiki_usr WITH ENCRYPTED PASSWORD 'Passw0rd';
+    GRANT ALL PRIVILEGES ON DATABASE wiki_db TO wiki_usr;
+    \c wiki_db postgres
+    GRANT ALL ON SCHEMA public TO wiki_usr;
+
+    CREATE DATABASE ejbca_db;
+    CREATE USER ejbca_usr WITH ENCRYPTED PASSWORD 'Passw0rd';
+    GRANT ALL PRIVILEGES ON DATABASE ejbca_db TO ejbca_usr;
+    \c ejbca_db postgres
+    GRANT ALL ON SCHEMA public TO ejbca_usr;
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -32,16 +56,16 @@ spec:
             - mountPath: /bitnami/postgresql
               name: postgresdata
             - mountPath: /docker-entrypoint-initdb.d
-              name: initdb
+              name: initdb-01
           env:
             - name: POSTGRESQL_USERNAME
-              value: "enta"
+              value: "postgres"
             - name: POSTGRESQL_PASSWORD
               value: "Passw0rd"
       volumes:
         - name: postgresdata
           persistentVolumeClaim:
             claimName: postgres-pvc
-        - name: initdb
+        - name: initdb-01
           configMap:
             name: postgres-initdb

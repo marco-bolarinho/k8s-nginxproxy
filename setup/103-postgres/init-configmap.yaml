@@ -4,4 +4,4 @@ metadata:
   name: postgres-initdb
 data:
   init.sql: |
-    CREATE DATABASE mydatabase;
+    CREATE DATABASE plik-db;

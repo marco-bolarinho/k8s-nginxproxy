@@ -17,5 +17,25 @@ spec:
       containers:
         - name: plik
           image: rootgg/plik:latest
+          resources:
+            requests:
+              memory: 512Mi
+              cpu: "250m"
+            limits:
+              memory: 1024Mi
+              cpu: "500m"
+          volumeMounts:
+            - name: plik-cfg
+              mountPath: /home/plik/server/plikd.cfg
+              subPath: plikd.cfg
+            - name: upload-files
+              mountPath: /home/plik/server/files/
           ports:
             - containerPort: 8080
+      volumes:
+        - name: plik-cfg # this is the name of the volumeMounts
+          configMap:
+            name: plik-cfg # this is the name of the configmap
+        - name: upload-files
+          persistentVolumeClaim:
+            claimName: plik-uploads-pvc
