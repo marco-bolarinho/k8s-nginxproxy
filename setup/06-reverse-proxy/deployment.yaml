@@ -22,6 +22,8 @@ spec:
               name: http
             - containerPort: 443
               name: https
+            - containerPort: 5432
+              name: postgres
           volumeMounts:
             - name: nginx-config-volume
               mountPath: /etc/nginx/nginx.conf  # Mount the NGINX configuration file

@@ -14,3 +14,7 @@ spec:
       port: 443
       targetPort: 443
       name: https
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432
+      name: postgres
