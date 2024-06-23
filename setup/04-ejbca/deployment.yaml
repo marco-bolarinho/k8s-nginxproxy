@@ -32,6 +32,12 @@ spec:
             - name: DATABASE_JDBC_URL
               value: "jdbc:postgresql://postgres-service:5432/ejbca_db?characterEncoding=utf8"
             - name: DATABASE_USER
-              value: ejbca_usr
+              valueFrom:
+                secretKeyRef:
+                  key: ejbca_usr
+                  name: cluster-secrets
             - name: DATABASE_PASSWORD
-              value: Passw0rd
+              valueFrom:
+                secretKeyRef:
+                  key: ejbca_pass
+                  name: cluster-secrets

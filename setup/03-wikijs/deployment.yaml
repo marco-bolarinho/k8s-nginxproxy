@@ -35,8 +35,17 @@ spec:
             - name: DB_PORT
               value: '5432'
             - name: DB_USER
-              value: wiki_usr
+              valueFrom:
+                secretKeyRef:
+                  key: wiki_usr
+                  name: cluster-secrets
             - name: DB_PASS
-              value: Passw0rd
+              valueFrom:
+                secretKeyRef:
+                  key: wiki_pass
+                  name: cluster-secrets
             - name: DB_NAME
-              value: wiki_db
+              valueFrom:
+                secretKeyRef:
+                  key: wiki_db
+                  name: cluster-secrets
